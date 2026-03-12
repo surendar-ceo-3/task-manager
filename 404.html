@@ -4,8 +4,15 @@
     <meta charset="utf-8">
     <title>Task Manager</title>
     <script>
-      sessionStorage.redirect = location.pathname;
-      location.href = '/task-manager/';
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      const path = location.pathname.substring('/task-manager/'.length);
+      const redirect = sessionStorage.redirect;
+      delete sessionStorage.redirect;
+      if (redirect && redirect !== path) {
+        history.replaceState(null, null, '/task-manager/' + redirect);
+      }
     </script>
   </head>
   <body>
